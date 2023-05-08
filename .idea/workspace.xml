@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="Prueba1">
-      <change afterPath="$PROJECT_DIR$/src/Warrior.java" afterDir="false" />
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="Crear listas Armas y Personajes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Arma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Personatge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WarriorContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WarriorContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WeaponContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeaponContainer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,9 +67,16 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.PruebaBBDD">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="BBDDConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BBDDConnection" />
+      <module name="Proyecto_Batalla" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Proyecto_Batalla" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -89,6 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.PruebaBBDD" />
         <item itemvalue="Application.BBDDConnection" />
       </list>
@@ -136,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683304624447</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Crear listas Armas y Personajes">
+      <created>1683566170154</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683566170154</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +180,7 @@
     <MESSAGE value="??" />
     <MESSAGE value="Prueba" />
     <MESSAGE value="Prueba1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prueba1" />
+    <MESSAGE value="Crear listas Armas y Personajes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Crear listas Armas y Personajes" />
   </component>
 </project>
