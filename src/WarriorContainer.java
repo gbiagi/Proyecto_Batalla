@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
 public class WarriorContainer {
-    private ArrayList WarriorList = new ArrayList();
+    private ArrayList<Warrior> WarriorList = new ArrayList<Warrior>();
+
 }
