@@ -26,6 +26,9 @@ public class Warrior {
 		this.points = points;
 	}
 
+    public Warrior() {
+    }
+
 	public int getId() {
 		return id;
 	}

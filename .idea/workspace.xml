@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="Crear listas Armas y Personajes">
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="guardar warriors en la arraylist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BBDDConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BBDDConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PruebaBBDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PruebaBBDD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WarriorContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WarriorContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeaponContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeaponContainer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,6 +114,7 @@
       <workItem from="1683303522558" duration="167000" />
       <workItem from="1683304377610" duration="3319000" />
       <workItem from="1683552497043" duration="4474000" />
+      <workItem from="1683643622753" duration="7130000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
@@ -151,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683566170154</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="guardar warriors en la arraylist">
+      <created>1683643464120</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683643464120</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +193,7 @@
     <MESSAGE value="Prueba" />
     <MESSAGE value="Prueba1" />
     <MESSAGE value="Crear listas Armas y Personajes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Crear listas Armas y Personajes" />
+    <MESSAGE value="guardar warriors en la arraylist" />
+    <option name="LAST_COMMIT_MESSAGE" value="guardar warriors en la arraylist" />
   </component>
 </project>

@@ -29,6 +29,18 @@ public class Weapon {
 		return name;
 	}
 
+	@Override
+	public String toString() {
+		return "Weapon" + id +
+				": id=" + id +
+				", name='" + name + '\'' +
+				", speed=" + speed +
+				", strenght=" + strenght +
+				", url='" + url + '\'' +
+				", points=" + points +
+				'}';
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
