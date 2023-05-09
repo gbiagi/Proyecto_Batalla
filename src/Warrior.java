@@ -30,6 +30,22 @@ public class Warrior {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return "Warrior" + id +
+				": id=" + id +
+				", name='" + name + '\'' +
+				", health=" + health +
+				", strenght=" + strenght +
+				", speed=" + speed +
+				", agility=" + agility +
+				", defense=" + defense +
+				", url='" + url + '\'' +
+				", weapon=" + weapon +
+				", points=" + points +
+				'}';
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
