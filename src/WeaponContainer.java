@@ -13,9 +13,6 @@ public class WeaponContainer {
             weaponList.add(new Weapon(rsWeapon.getInt(1), rsWeapon.getString(2),
                     rsWeapon.getInt(3), rsWeapon.getInt(4), rsWeapon.getString(5), rsWeapon.getInt(6)));
         }
-        for (Weapon i : weaponList) {
-            System.out.println(i.toString());
-        }
     }
     public Weapon getWeapon(int num) {
         return weaponList.get(num);
