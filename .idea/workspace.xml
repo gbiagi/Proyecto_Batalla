@@ -6,9 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="crear carpetas con un archivo para que se suban">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BBDDConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BBDDConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warrior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WarriorContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WarriorContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WarriorsImages/dwarf/dwarf3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WarriorsImages/human/huma1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/axe.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/axe.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/bow.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/bow.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/dagger.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/dagger.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/dual_sword.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/dual_sword.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/dual_wield_axe.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/dual_wield_axe.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/katana.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/katana.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/knife.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/knife.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/scimitar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/M03_Programacio/WeaponsImages/sword.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeaponContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeaponContainer.java" afterDir="false" />
     </list>
@@ -71,7 +80,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.WeaponsFrame">
     <configuration name="BBDDConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BBDDConnection" />
       <module name="Proyecto_Batalla" />
@@ -93,13 +102,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WarriorsFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WarriorsFrame" />
+      <module name="Proyecto_Batalla" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WeaponsFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WeaponsFrame" />
+      <module name="Proyecto_Batalla" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WeaponsFrame" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.WarriorsFrame" />
         <item itemvalue="Application.PruebaBBDD" />
         <item itemvalue="Application.BBDDConnection" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.PruebaBBDD" />
       </list>
     </recent_temporary>
   </component>

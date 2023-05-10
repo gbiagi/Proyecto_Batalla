@@ -18,4 +18,8 @@ public class WeaponContainer {
         return weaponList.get(num);
     }
 
+    public ArrayList<Weapon> getList(){
+        return weaponList;
+    };
+
 }

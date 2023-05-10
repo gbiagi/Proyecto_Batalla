@@ -33,6 +33,22 @@ public class Weapon {
 		return id;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
