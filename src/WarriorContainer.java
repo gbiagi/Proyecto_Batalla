@@ -4,12 +4,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class WarriorContainer {
+    //Creamos una ArrayList para guardar los personajes desde la base de datos.
     private ArrayList<Warrior> warriorList = new ArrayList<Warrior>();
 
     public void createList() throws SQLException {
-        //Create arraylist to store the warriors from the bbdd
-        //create query and save the results
-        ResultSet rsWarrior = BBDDConnection.Connection("Select * from warriors;");
+        // Mediante una query y la clase BBDDConnection, guardamos los personajes.
+        ResultSet rsWarrior = BBDDConnection.connection("Select * from warriors;");
         while (rsWarrior.next()) {
             warriorList.add(new Warrior(rsWarrior.getInt(1), rsWarrior.getString(2), rsWarrior.getInt(3),
                     rsWarrior.getInt(4), rsWarrior.getInt(5), rsWarrior.getInt(6),

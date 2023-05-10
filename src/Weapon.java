@@ -17,18 +17,7 @@ public class Weapon {
 		this.points = points;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
+	// Setters & Getters de la clase Weapon
 	@Override
 	public String toString() {
 		return "Weapon" + id +
@@ -39,6 +28,17 @@ public class Weapon {
 				", url='" + url + '\'' +
 				", points=" + points +
 				'}';
+	}
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void setName(String name) {

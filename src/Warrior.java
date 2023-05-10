@@ -25,14 +25,6 @@ public class Warrior {
 		this.weapon = weapon;
 		this.points = points;
 	}
-
-    public Warrior() {
-    }
-
-	public int getId() {
-		return id;
-	}
-
 	@Override
 	public String toString() {
 		return "Warrior" + id +
@@ -47,6 +39,13 @@ public class Warrior {
 				", weapon=" + weapon +
 				", points=" + points +
 				'}';
+	}
+	// Setters & Getters de la clase Warrior
+    public Warrior() {
+    }
+
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {

@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="crear carpetas con un archivo para que se suban">
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BBDDConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BBDDConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warrior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WarriorContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WarriorContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeaponContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeaponContainer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tianle" />
+        <entry key="$PROJECT_DIR$" value="joel" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,6 +98,8 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.PruebaBBDD" />
         <item itemvalue="Application.BBDDConnection" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.PruebaBBDD" />
       </list>
     </recent_temporary>
   </component>
@@ -111,6 +117,7 @@
       <workItem from="1683304377610" duration="3319000" />
       <workItem from="1683552497043" duration="4474000" />
       <workItem from="1683643622753" duration="8950000" />
+      <workItem from="1683730549397" duration="1336000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
