@@ -79,19 +79,18 @@ public class Fight {
 
 //	Method that determines the fight logic
 
-    public void combat(Warrior player, Weapon playerWeapon, Warrior bot, Weapon botWeapon) {
+    public void combat(Warrior player, Warrior bot) {
 
-        Warrior attacker = null;
-        Weapon attackerWeapon = null;
-        Warrior defender = null;
-        Weapon defenderWeapon = null;
-        int num = (int) (Math.floor(Math.random() * 2) + 1);
+        Warrior attacker = new Warrior();
+        Warrior defender = new Warrior();
 
-        if (total_speed(player, playerWeapon) > total_speed(bot, botWeapon)) {
+        int num = (int) (Math.floor(Math.random() * 2) + 1); // Random num in case both speed and agility are equal
+
+        if (total_speed(player, player.getWeapon()) > total_speed(bot, bot.getWeapon())) {
             player = attacker;
             bot = defender;
         }
-        else if (total_speed(bot, botWeapon) > total_speed(player, playerWeapon)) {
+        else if (total_speed(bot, bot.getWeapon()) > total_speed(player, player.getWeapon())) {
             bot = attacker;
             player = defender;
         }
@@ -118,8 +117,9 @@ public class Fight {
         while (true) {
             while (true) {
                 perform_attack(attacker);
-                dodge_attack(attacker, attackerWeapon, defender);
-                if (repeat_attack(attacker, attackerWeapon, defender, defenderWeapon) == false) {
+
+                dodge_attack(attacker, attacker.getWeapon(), defender);
+                if (!repeat_attack(attacker, attacker.getWeapon(), defender, defender.getWeapon())) {
                     break;
                 }
             }
@@ -129,8 +129,8 @@ public class Fight {
             }
             while (true) {
                 perform_attack(defender);
-                dodge_attack(defender, defenderWeapon, attacker);
-                if (repeat_attack(defender, defenderWeapon, attacker, attackerWeapon) == false) {
+                dodge_attack(defender, defender.getWeapon(), attacker);
+                if (!repeat_attack(defender, defender.getWeapon(), attacker, attacker.getWeapon())) {
                     break;
                 }
             }
@@ -140,5 +140,4 @@ public class Fight {
             }
         }
     }
-
 }
