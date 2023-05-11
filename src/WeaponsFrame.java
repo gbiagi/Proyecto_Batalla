@@ -24,7 +24,7 @@ public class WeaponsFrame extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					OcultarPer();
-				}
+                }
 			});
 			this.add(button);
 		}

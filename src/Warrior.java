@@ -60,11 +60,11 @@ public class Warrior {
 		this.name = name;
 	}
 
-	public int gethealth() {
+	public int getHealth() {
 		return health;
 	}
 
-	public void sethealth(int health) {
+	public void setHealth(int health) {
 		this.health = health;
 	}
 

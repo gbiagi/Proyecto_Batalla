@@ -4,14 +4,21 @@ public class Main {
     //private Warrior player;
     private Warrior bot;
     public static void main(String[] args) throws SQLException {
+        Warrior player;
+
 //        WarriorContainer iniListWarrior = new WarriorContainer();
 //        WeaponContainer iniListWeapon = new WeaponContainer();
 //
 //        iniListWarrior.createList();
 //        iniListWeapon.createList(1);
-        new WarriorsFrame();
-        new WeaponsFrame();
-//        Warrior player = iniListWarrior.getWarrior(8);
+        WarriorsFrame selectWarrior = new WarriorsFrame();
+        player = selectWarrior.getWarrior();
+        System.out.println(player.toString());
+
+        //System.out.println(selectWarrior.getWarrior()+"********");
+
+        //new WeaponsFrame();
+
 //
 //        Warrior bot = iniListWarrior.getWarrior((int) (1+Math.random()*iniListWarrior.getList().size()));
 //
