@@ -2,7 +2,7 @@ import java.sql.SQLException;
 
 public class Main {
     //private Warrior player;
-    private Warrior bot;
+    //private Warrior bot;
     public static void main(String[] args) throws SQLException {
         Warrior player;
 

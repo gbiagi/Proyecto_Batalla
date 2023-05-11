@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="arreglos frame + inicio pelea">
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="clase fight creada">
+      <change afterPath="$PROJECT_DIR$/src/Continue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeaponsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeaponsFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +70,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="BBDDConnection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BBDDConnection" />
+  <component name="RunManager" selected="Application.MainFrame">
+    <configuration name="Fight" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Fight" />
       <module name="Proyecto_Batalla" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -82,8 +85,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PruebaBBDD" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PruebaBBDD" />
+    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainFrame" />
       <module name="Proyecto_Batalla" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -105,11 +108,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainFrame" />
+        <item itemvalue="Application.Fight" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.WeaponsFrame" />
         <item itemvalue="Application.WarriorsFrame" />
-        <item itemvalue="Application.PruebaBBDD" />
-        <item itemvalue="Application.BBDDConnection" />
       </list>
     </recent_temporary>
   </component>
@@ -129,7 +132,7 @@
       <workItem from="1683643622753" duration="8950000" />
       <workItem from="1683730549397" duration="1336000" />
       <workItem from="1683815008017" duration="3160000" />
-      <workItem from="1683818473630" duration="6235000" />
+      <workItem from="1683818473630" duration="13858000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
@@ -201,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683820177505</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="clase fight creada">
+      <created>1683825100674</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683825100674</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +251,7 @@
     <MESSAGE value="crear carpetas con un archivo para que se suban" />
     <MESSAGE value="frames + inicio seleccion pj y arma" />
     <MESSAGE value="arreglos frame + inicio pelea" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglos frame + inicio pelea" />
+    <MESSAGE value="clase fight creada" />
+    <option name="LAST_COMMIT_MESSAGE" value="clase fight creada" />
   </component>
 </project>

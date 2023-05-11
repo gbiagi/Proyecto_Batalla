@@ -8,12 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class WeaponsFrame extends JFrame {
-	public static void main(String[] args) throws SQLException {
-		new WeaponsFrame();
-	}
-	public WeaponsFrame() throws SQLException {
-		WeaponContainer selectWeapon = new WeaponContainer();
-		selectWeapon.createList(8);
+	Weapon selectedWeapon;
+	WeaponContainer selectWeapon = new WeaponContainer();
+	public WeaponsFrame(Warrior player) throws SQLException {
+
+		selectWeapon.createList(player.getId());
+
 		this.setLayout(new GridLayout(3,3));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -23,6 +23,7 @@ public class WeaponsFrame extends JFrame {
 			button.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					selectedWeapon = weapon;
 					OcultarPer();
                 }
 			});
@@ -39,4 +40,8 @@ public class WeaponsFrame extends JFrame {
 	public void OcultarPer() {
 		this.dispose();
 	}
+	public Weapon getWeapon() {
+		return selectedWeapon;
+	}
+
 }
