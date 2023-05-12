@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="peleapelea">
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warrior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WarriorsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WarriorsFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,20 +68,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="MainFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainFrame" />
-      <module name="Proyecto_Batalla" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MainFrame" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -102,7 +85,7 @@
       <workItem from="1683730549397" duration="1336000" />
       <workItem from="1683815008017" duration="3160000" />
       <workItem from="1683818473630" duration="14002000" />
-      <workItem from="1683906137278" duration="8777000" />
+      <workItem from="1683906137278" duration="9484000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
@@ -188,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683832779195</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria">
+      <created>1683915021751</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683915021751</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +220,7 @@
     <MESSAGE value="arreglos frame + inicio pelea" />
     <MESSAGE value="clase fight creada" />
     <MESSAGE value="peleapelea" />
-    <option name="LAST_COMMIT_MESSAGE" value="peleapelea" />
+    <MESSAGE value="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria" />
+    <option name="LAST_COMMIT_MESSAGE" value="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria" />
   </component>
 </project>
