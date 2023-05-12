@@ -52,6 +52,14 @@ public class Warrior {
 		this.id = id;
 	}
 
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
 	public String getName() {
 		return name;
 	}

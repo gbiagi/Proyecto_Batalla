@@ -1,13 +1,9 @@
-import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,16 +12,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Fight extends JFrame {
-	public static void main(String[] args) {
-		new Fight();
-	}
 
 	private Warrior player, bot;
 	private Weapon weapon_1, weapon_2;
-	private JTextArea text, health_1, health_2;
+	private JTextArea text, healthPlayer, healthBot;
 	private JScrollPane console;
-	private JLabel characterIcon_1, characterIcon_2;
-	private JButton character, weapon, ranking, fight, clear;
+	private JLabel playerIcon, botIcon;
+	private JButton characterButton, weaponButton, rankingButton, fightButton, clearButton;
 	private JPanel buttonPanel_1, charactersPanel, characterPanel_1, characterPanel_2, weaponsPanel, statsPanel, statsLvlPanel, buttonPanel_2, consolePanel, mainPanel;
 
 
@@ -167,8 +160,8 @@ public class Fight extends JFrame {
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		character = new JButton("Choose Character");
-		character.addActionListener(new ActionListener() {
+		characterButton = new JButton("Choose Character");
+		characterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new WarriorsFrame();
@@ -177,7 +170,7 @@ public class Fight extends JFrame {
 				}
 			}
 		});
-		weapon = new JButton("Choose weapon");
+		weaponButton = new JButton("Choose weapon");
 		/*weapon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (characters.isEmpty()) {
@@ -192,31 +185,31 @@ public class Fight extends JFrame {
 				}
 			}
 		});*/
-		ranking = new JButton("Ranking");
+		rankingButton = new JButton("Ranking");
 		buttonPanel_1 = new JPanel();
-		buttonPanel_1.add(character);
-		buttonPanel_1.add(weapon);
-		buttonPanel_1.add(ranking);
+		buttonPanel_1.add(characterButton);
+		buttonPanel_1.add(weaponButton);
+		buttonPanel_1.add(rankingButton);
 		
-		health_1 = new JTextArea(3, 32);
-		health_1.setEditable(false);
-		health_1.setText("100%");
-		health_1.setAlignmentX(Component.CENTER_ALIGNMENT);
-		health_1.setAlignmentY(Component.CENTER_ALIGNMENT);
+		healthPlayer = new JTextArea(3, 32);
+		healthPlayer.setEditable(false);
+		healthPlayer.setText("100%");
+		healthPlayer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		healthPlayer.setAlignmentY(Component.CENTER_ALIGNMENT);
 		
 		characterPanel_1 = new JPanel();
-		characterPanel_1.add(health_1);
+		characterPanel_1.add(healthPlayer);
 		
-		health_2 = new JTextArea(3, 32);
-		health_2.setText("100%");
+		healthBot = new JTextArea(3, 32);
+		healthBot.setText("100%");
 		characterPanel_2 = new JPanel();
-		characterPanel_2.add(health_2);
+		characterPanel_2.add(healthBot);
 		
 		charactersPanel = new JPanel();
 		charactersPanel.add(characterPanel_1);
 		charactersPanel.add(characterPanel_2);
 		
-		fight = new JButton("Fight");
+		fightButton = new JButton("Fight");
 /*		fight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (weapons.isEmpty()) {
@@ -224,15 +217,15 @@ public class Fight extends JFrame {
 				}
 			}
 		});*/
-		clear = new JButton("Clear Console");
-		clear.addActionListener(new ActionListener() {
+		clearButton = new JButton("Clear Console");
+		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				text.setText("");
 			}
 		});
 		buttonPanel_2 = new JPanel();
-		buttonPanel_2.add(fight);
-		buttonPanel_2.add(clear);
+		buttonPanel_2.add(fightButton);
+		buttonPanel_2.add(clearButton);
 		
 		text = new JTextArea(10, 67);
 		text.setEditable(false);
