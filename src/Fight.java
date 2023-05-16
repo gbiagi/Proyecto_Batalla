@@ -95,7 +95,7 @@ public class Fight extends JFrame {
 		this.add(mainPanel);
 
 		this.setTitle("Menu");
-		this.setSize(700, 700);
+		this.setSize(900, 700);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
@@ -164,10 +164,10 @@ public class Fight extends JFrame {
 //	Method that determines who's the warrior that have won
 	public String winner(Warrior warrior1, Warrior warrior2) {
 		String message = "";
-		if (warrior1.getHealth() == 0) {
+		if (warrior1.getHealth() <= 0) {
 			message = warrior1.getName() + " wins!";
 		}
-		else if (warrior2.getHealth() == 0) {
+		else if (warrior2.getHealth() <= 0) {
 			message = warrior2.getName() + " wins!";
 		}
 		return message;
@@ -211,29 +211,32 @@ public class Fight extends JFrame {
 		}
 		while (true) {
 			while (true) {
-				System.out.println(perform_attack(attacker));
-				System.out.println(dodge_attack(attacker, attacker.getWeapon(), defender));
-
-				System.out.println("Ataquee");
+				text.append("\n"+perform_attack(attacker));
+				text.append("\n"+dodge_attack(attacker, attacker.getWeapon(), defender));
+				System.out.println(attacker.getName() + "--- " + attacker.getHealth());
+				System.out.println(defender.getName() + "--- " + defender.getHealth());
+				System.out.println("*********************************************************");
 				if (!repeat_attack(attacker, attacker.getWeapon(), defender, defender.getWeapon())) {
 					break;
 				}
 			}
-			if (attacker.getHealth() == 0 || defender.getHealth() == 0) {
-				System.out.println(winner(attacker,defender));
+			if (attacker.getHealth() <= 0 || defender.getHealth() <= 0) {
+				text.append("\n*******************************\n"+winner(attacker,defender));
 				new Continue();
 				break;
 			}
 			while (true) {
-				System.out.println(perform_attack(defender));
-				System.out.println(dodge_attack(defender, defender.getWeapon(), attacker));
-				System.out.println("Ataquee2");
+				text.append("\n"+perform_attack(defender));
+				text.append("\n"+dodge_attack(defender, defender.getWeapon(), attacker));
+				System.out.println(attacker.getName() + "--- " + attacker.getHealth());
+				System.out.println(defender.getName() + "--- " + defender.getHealth());
+				System.out.println("***************************************************************************");
 				if (!repeat_attack(defender, defender.getWeapon(), attacker, attacker.getWeapon())) {
 					break;
 				}
 			}
-			if (attacker.getHealth() == 0 || defender.getHealth() == 0) {
-				System.out.println(winner(attacker,defender));
+			if (attacker.getHealth() <= 0 || defender.getHealth() <= 0) {
+				text.append("\n*******************************\n"+winner(attacker,defender));
 				new Continue();
 				break;
 			}

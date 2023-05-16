@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="update">
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="fight update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WarriorsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WarriorsFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,7 @@
       <workItem from="1683815008017" duration="3160000" />
       <workItem from="1683818473630" duration="14002000" />
       <workItem from="1683906137278" duration="9484000" />
-      <workItem from="1684243473041" duration="4704000" />
+      <workItem from="1684243473041" duration="6163000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
@@ -195,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683915021751</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fight update">
+      <created>1684248332275</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1684248332275</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +243,7 @@
     <MESSAGE value="clase fight creada" />
     <MESSAGE value="peleapelea" />
     <MESSAGE value="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria" />
-    <option name="LAST_COMMIT_MESSAGE" value="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria" />
+    <MESSAGE value="fight update" />
+    <option name="LAST_COMMIT_MESSAGE" value="fight update" />
   </component>
 </project>
