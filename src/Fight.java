@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Fight extends JFrame {
+	private boolean win;
 	private Weapon weapon_1, weapon_2;
 	private JTextArea text, healthPlayer, healthBot;
 	private JScrollPane console;
@@ -159,6 +160,7 @@ public class Fight extends JFrame {
 		else {
 			if (((total_speed(attacker, attackerWeapon) - total_speed(defender, defenderWeapon)) * 10) > num) {
 				repeatAttack = true;
+				text.append("\n"+attacker.getName()+" attacks again.");
 			}
 			else {
 				repeatAttack = false;
@@ -182,36 +184,37 @@ public class Fight extends JFrame {
 //	Method that determines the fight logic
 	public void combat(Warrior player, Warrior bot) {
 
-		Warrior attacker = player;
-		Warrior defender = bot;
+		Warrior attacker;
+		Warrior defender;
+		int initialHealth = player.getHealth();
 
 		int num = (int) (Math.floor(Math.random() * 2) + 1); // Random num in case both speed and agility are equal
 
 		if (total_speed(player, player.getWeapon()) > total_speed(bot, bot.getWeapon())) {
-			player = attacker;
-			bot = defender;
+			attacker = player;
+			defender = bot;
 		}
 		else if (total_speed(bot, bot.getWeapon()) > total_speed(player, player.getWeapon())) {
-			bot = attacker;
-			player = defender;
+			attacker = bot;
+			defender = player;
 		}
 		else {
 			if (total_agility(player) > total_agility(bot)) {
-				player = attacker;
-				bot = defender;
+				attacker = player;
+				defender = bot;
 			}
 			else if (total_agility(bot) > total_agility(player)) {
-				bot = attacker;
-				player = defender;
+				attacker = bot;
+				defender = player;
 			}
 			else {
 				if (num == 1) {
-					player = attacker;
-					bot = defender;
+					attacker = player;
+					defender = bot;
 				}
 				else{
-					bot = attacker;
-					player = defender;
+					attacker = bot;
+					defender = player;
 				}
 			}
 		}
@@ -230,11 +233,16 @@ public class Fight extends JFrame {
 			}
 			if (attacker.getHealth() <= 0 || defender.getHealth() <= 0) {
 				text.append("\n*******************************\n"+winner(attacker,defender));
-				new Continue(player).addWindowListener(new WindowAdapter() {
+				if (winner(attacker,defender).contains(player.getName() + " wins!")){
+					win = true;
+					bot = null;
+				}
+				new Continue(player, bot, win, initialHealth).addWindowListener(new WindowAdapter() {
 					@Override
 					public void windowClosed(WindowEvent e) {
 						characterButton.setEnabled(true);
 						weaponButton.setEnabled(true);
+
 					}
 				});
 				break;

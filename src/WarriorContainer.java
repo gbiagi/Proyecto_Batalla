@@ -19,6 +19,7 @@ public class WarriorContainer {
     public Warrior getWarrior(int num) {
         return warriorList.get(num);
     }
+
     public ArrayList<Warrior> getList(){
         return warriorList;
     };

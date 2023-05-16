@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -15,8 +16,8 @@ public class Continue extends JFrame {
 	private JButton button_1, button_2;
 	private JPanel endPanel, questionPanel, buttonsPanel, mainPanel;
 	
-	public Continue(Warrior player) {
-		
+	public Continue(Warrior player, Warrior bot, boolean win, int initialHealth) {
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		question = new JLabel("Do you want to keep fighting?");
 		questionPanel = new JPanel();
@@ -26,7 +27,6 @@ public class Continue extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				player.setHealth(2000);
 				dispose();
 			}
 		});
