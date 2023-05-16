@@ -33,7 +33,7 @@ public class WarriorsFrame extends JFrame {
 			this.add(button);
 		}
 		this.pack();
-		this.setTitle("Weapons");
+		this.setTitle("Warriors");
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setVisible(true);

@@ -12,14 +12,93 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class Fight extends JFrame {
-
-	private Warrior player, bot;
 	private Weapon weapon_1, weapon_2;
 	private JTextArea text, healthPlayer, healthBot;
 	private JScrollPane console;
 	private JLabel playerIcon, botIcon;
 	private JButton characterButton, weaponButton, rankingButton, fightButton, clearButton;
 	private JPanel buttonPanel_1, charactersPanel, characterPanel_1, characterPanel_2, weaponsPanel, statsPanel, statsLvlPanel, buttonPanel_2, consolePanel, mainPanel;
+
+	public Fight(Warrior characterChosen, Warrior randomBot) {
+
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		characterButton = new JButton("Choose Character");
+		characterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					new WarriorsFrame();
+				} catch (SQLException ex) {
+					throw new RuntimeException(ex);
+				}
+			}
+		});
+		weaponButton = new JButton("Choose weapon");
+
+		rankingButton = new JButton("Ranking");
+		buttonPanel_1 = new JPanel();
+		buttonPanel_1.add(characterButton);
+		buttonPanel_1.add(weaponButton);
+		buttonPanel_1.add(rankingButton);
+
+		healthPlayer = new JTextArea(3, 32);
+		healthPlayer.setEditable(false);
+		healthPlayer.setText("100%");
+		healthPlayer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		healthPlayer.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+		characterPanel_1 = new JPanel();
+		characterPanel_1.add(healthPlayer);
+
+		healthBot = new JTextArea(3, 32);
+		healthBot.setText("100%");
+		characterPanel_2 = new JPanel();
+		characterPanel_2.add(healthBot);
+
+		charactersPanel = new JPanel();
+		charactersPanel.add(characterPanel_1);
+		charactersPanel.add(characterPanel_2);
+
+		fightButton = new JButton("Fight");
+		fightButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				combat(characterChosen,randomBot);
+			}
+		});
+
+		clearButton = new JButton("Clear Console");
+		clearButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				text.setText("");
+			}
+		});
+		buttonPanel_2 = new JPanel();
+		buttonPanel_2.add(fightButton);
+		buttonPanel_2.add(clearButton);
+
+		text = new JTextArea(10, 67);
+		text.setEditable(false);
+		console = new JScrollPane(text);
+		console.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		console.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		consolePanel = new JPanel();
+		consolePanel.add(console);
+		console.setSize(700, 100);
+
+		mainPanel = new JPanel();
+		mainPanel.add(buttonPanel_1);
+		mainPanel.add(charactersPanel);
+		mainPanel.add(buttonPanel_2);
+		mainPanel.add(consolePanel);
+		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+		this.add(mainPanel);
+
+		this.setTitle("Menu");
+		this.setSize(700, 700);
+		this.setResizable(false);
+		this.setVisible(true);
+	}
 
 
 	//	Method that counts a warrior's total speed
@@ -54,8 +133,8 @@ public class Fight extends JFrame {
 		String message;
 		int damage = attacker.getStrenght() + weapon.getStrenght() - defender.getDefense();
 		int num = (int) (Math.floor(Math.random() * 50) + 1);
-		if ((defender.getAgility() * 10) > num) {
-			message = "The defender missed the attack";
+		if ((defender.getAgility()) > num) {
+			message = "The defender dodged the attack";
 		}
 		else {
 			defender.setHealth(defender.getHealth() - damage);
@@ -97,8 +176,8 @@ public class Fight extends JFrame {
 //	Method that determines the fight logic
 	public void combat(Warrior player, Warrior bot) {
 
-		Warrior attacker = new Warrior();
-		Warrior defender = new Warrior();
+		Warrior attacker = new Warrior(player.getId(), player.getName(), player.getHealth(), player.getStrenght(), player.getSpeed(), player.getAgility(), player.getDefense(), player.getUrl(), player.getWeapon(), player.getPoints());
+		Warrior defender = new Warrior(bot.getId(), bot.getName(), bot.getHealth(), bot.getStrenght(), bot.getSpeed(), bot.getAgility(), bot.getDefense(), bot.getUrl(), bot.getWeapon(), bot.getPoints());
 
 		int num = (int) (Math.floor(Math.random() * 2) + 1); // Random num in case both speed and agility are equal
 
@@ -132,121 +211,32 @@ public class Fight extends JFrame {
 		}
 		while (true) {
 			while (true) {
-				perform_attack(attacker);
+				System.out.println(perform_attack(attacker));
+				System.out.println(dodge_attack(attacker, attacker.getWeapon(), defender));
 
-				dodge_attack(attacker, attacker.getWeapon(), defender);
+				System.out.println("Ataquee");
 				if (!repeat_attack(attacker, attacker.getWeapon(), defender, defender.getWeapon())) {
 					break;
 				}
 			}
 			if (attacker.getHealth() == 0 || defender.getHealth() == 0) {
-				//new Continue();
+				System.out.println(winner(attacker,defender));
+				new Continue();
 				break;
 			}
 			while (true) {
-				perform_attack(defender);
-				dodge_attack(defender, defender.getWeapon(), attacker);
+				System.out.println(perform_attack(defender));
+				System.out.println(dodge_attack(defender, defender.getWeapon(), attacker));
+				System.out.println("Ataquee2");
 				if (!repeat_attack(defender, defender.getWeapon(), attacker, attacker.getWeapon())) {
 					break;
 				}
 			}
 			if (attacker.getHealth() == 0 || defender.getHealth() == 0) {
-				//new Continue();
+				System.out.println(winner(attacker,defender));
+				new Continue();
 				break;
 			}
 		}
-	}
-	public Fight() {
-		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		characterButton = new JButton("Choose Character");
-		characterButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					new WarriorsFrame();
-				} catch (SQLException ex) {
-					throw new RuntimeException(ex);
-				}
-			}
-		});
-		weaponButton = new JButton("Choose weapon");
-		/*weapon.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (characters.isEmpty()) {
-					text.append("You hadn't choose any character\n");
-				}
-				else {
-					try {
-						new WeaponsFrame();
-					} catch (SQLException ex) {
-						throw new RuntimeException(ex);
-					}
-				}
-			}
-		});*/
-		rankingButton = new JButton("Ranking");
-		buttonPanel_1 = new JPanel();
-		buttonPanel_1.add(characterButton);
-		buttonPanel_1.add(weaponButton);
-		buttonPanel_1.add(rankingButton);
-		
-		healthPlayer = new JTextArea(3, 32);
-		healthPlayer.setEditable(false);
-		healthPlayer.setText("100%");
-		healthPlayer.setAlignmentX(Component.CENTER_ALIGNMENT);
-		healthPlayer.setAlignmentY(Component.CENTER_ALIGNMENT);
-		
-		characterPanel_1 = new JPanel();
-		characterPanel_1.add(healthPlayer);
-		
-		healthBot = new JTextArea(3, 32);
-		healthBot.setText("100%");
-		characterPanel_2 = new JPanel();
-		characterPanel_2.add(healthBot);
-		
-		charactersPanel = new JPanel();
-		charactersPanel.add(characterPanel_1);
-		charactersPanel.add(characterPanel_2);
-		
-		fightButton = new JButton("Fight");
-/*		fight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (weapons.isEmpty()) {
-					text.append("You haven't chose any armed character\n");
-				}
-			}
-		});*/
-		clearButton = new JButton("Clear Console");
-		clearButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				text.setText("");
-			}
-		});
-		buttonPanel_2 = new JPanel();
-		buttonPanel_2.add(fightButton);
-		buttonPanel_2.add(clearButton);
-		
-		text = new JTextArea(10, 67);
-		text.setEditable(false);
-		console = new JScrollPane(text);
-		console.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		console.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		consolePanel = new JPanel();
-		consolePanel.add(console);
-		console.setSize(700, 100);
-		
-		mainPanel = new JPanel();
-		mainPanel.add(buttonPanel_1);
-		mainPanel.add(charactersPanel);
-		mainPanel.add(buttonPanel_2);
-		mainPanel.add(consolePanel);
-		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-		this.add(mainPanel);
-		
-		this.setTitle("Menu");
-		this.setSize(700, 700);
-		this.setResizable(false);
-		this.setVisible(true);
 	}
 }

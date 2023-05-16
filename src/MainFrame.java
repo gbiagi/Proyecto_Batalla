@@ -50,14 +50,13 @@ public class MainFrame extends JFrame {
                 else {
                     try {
                         warriorList.createList();
-                        bot = warriorList.getWarrior((int) (1+Math.random()*warriorList.getList().size()));
+                        bot = warriorList.getWarrior((int) (Math.random()*warriorList.getList().size()));
                         weaponList.createList(bot.getId());
-                        bot.setWeapon(weaponList.getWeapon((int) (1+Math.random()*weaponList.getList().size())));
+                        bot.setWeapon(weaponList.getWeapon((int) (Math.random()*weaponList.getList().size())));
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
-                    System.out.println(bot.toString());
-                    new Fight();
+                    new Fight(player,bot);
                     dispose();
                 }
             }
