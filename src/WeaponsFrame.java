@@ -15,7 +15,6 @@ public class WeaponsFrame extends JFrame {
 		selectWeapon.createList(player.getId());
 
 		this.setLayout(new GridLayout(3,3));
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		for (Weapon weapon : selectWeapon.getList()) {
 			ImageIcon weaponImage = new ImageIcon(weapon.getUrl());

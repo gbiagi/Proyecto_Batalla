@@ -13,10 +13,10 @@ public class BBDDConnection {
         try {
             // 1. Cargar driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Driver cargado correctamente");
+            //System.out.println("Driver cargado correctamente");
             // 2. Crear conexion con la base de datosw
             Connection conn = DriverManager.getConnection(urlDatos, usuario, pass);
-            System.out.println("Conexion creada correctamente");
+            //System.out.println("Conexion creada correctamente");
             // 3. Crear una consulta
             //query = "select * from players";
             // 4. Instanciar objeto de la clase consulta

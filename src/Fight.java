@@ -1,6 +1,8 @@
-import java.awt.Component;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
@@ -94,8 +96,12 @@ public class Fight extends JFrame {
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 		this.add(mainPanel);
 
+		characterButton.setEnabled(false);
+		weaponButton.setEnabled(false);
+
 		this.setTitle("Menu");
-		this.setSize(900, 700);
+		this.setLocation(300,0);
+		this.setSize(800, 700);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
@@ -120,10 +126,10 @@ public class Fight extends JFrame {
 		String message;
 		int num = (int) (Math.floor(Math.random() * 100) + 1);
 		if ((warrior.getAgility() * 10) > num) {
-			message = "Attack succesfully performed";
+			message = warrior.getName() + ": Attack succesfully performed.";
 		}
 		else {
-			message = "Failed attack";
+			message = warrior.getName() + ": Attack failed.";
 		}
 		return message;
 	}
@@ -134,11 +140,11 @@ public class Fight extends JFrame {
 		int damage = attacker.getStrenght() + weapon.getStrenght() - defender.getDefense();
 		int num = (int) (Math.floor(Math.random() * 50) + 1);
 		if ((defender.getAgility()) > num) {
-			message = "The defender dodged the attack";
+			message = defender.getName()+" dodged the attack.";
 		}
 		else {
 			defender.setHealth(defender.getHealth() - damage);
-			message = "The defender has recieved " + damage + " damage points";
+			message = defender.getName()+" has recieved " + damage + " damage points.";
 		}
 		return message;
 	}
@@ -176,8 +182,8 @@ public class Fight extends JFrame {
 //	Method that determines the fight logic
 	public void combat(Warrior player, Warrior bot) {
 
-		Warrior attacker = new Warrior(player.getId(), player.getName(), player.getHealth(), player.getStrenght(), player.getSpeed(), player.getAgility(), player.getDefense(), player.getUrl(), player.getWeapon(), player.getPoints());
-		Warrior defender = new Warrior(bot.getId(), bot.getName(), bot.getHealth(), bot.getStrenght(), bot.getSpeed(), bot.getAgility(), bot.getDefense(), bot.getUrl(), bot.getWeapon(), bot.getPoints());
+		Warrior attacker = player;
+		Warrior defender = bot;
 
 		int num = (int) (Math.floor(Math.random() * 2) + 1); // Random num in case both speed and agility are equal
 
@@ -211,35 +217,31 @@ public class Fight extends JFrame {
 		}
 		while (true) {
 			while (true) {
+				text.append("\n"+attacker.getName()+" turn:");
 				text.append("\n"+perform_attack(attacker));
-				text.append("\n"+dodge_attack(attacker, attacker.getWeapon(), defender));
-				System.out.println(attacker.getName() + "--- " + attacker.getHealth());
-				System.out.println(defender.getName() + "--- " + defender.getHealth());
-				System.out.println("*********************************************************");
+				if (!perform_attack(attacker).contains("Attack failed.")){
+					text.append("\n"+dodge_attack(attacker, attacker.getWeapon(), defender));
+				}
+				text.append("\n"+attacker.getName()+" remaining health: "+attacker.getHealth());
+				text.append("\n"+defender.getName()+" remaining health: "+defender.getHealth());
 				if (!repeat_attack(attacker, attacker.getWeapon(), defender, defender.getWeapon())) {
 					break;
 				}
 			}
 			if (attacker.getHealth() <= 0 || defender.getHealth() <= 0) {
 				text.append("\n*******************************\n"+winner(attacker,defender));
-				new Continue();
+				new Continue(player).addWindowListener(new WindowAdapter() {
+					@Override
+					public void windowClosed(WindowEvent e) {
+						characterButton.setEnabled(true);
+						weaponButton.setEnabled(true);
+					}
+				});
 				break;
 			}
-			while (true) {
-				text.append("\n"+perform_attack(defender));
-				text.append("\n"+dodge_attack(defender, defender.getWeapon(), attacker));
-				System.out.println(attacker.getName() + "--- " + attacker.getHealth());
-				System.out.println(defender.getName() + "--- " + defender.getHealth());
-				System.out.println("***************************************************************************");
-				if (!repeat_attack(defender, defender.getWeapon(), attacker, attacker.getWeapon())) {
-					break;
-				}
-			}
-			if (attacker.getHealth() <= 0 || defender.getHealth() <= 0) {
-				text.append("\n*******************************\n"+winner(attacker,defender));
-				new Continue();
-				break;
-			}
+			Warrior aux = attacker;
+			attacker = defender;
+			defender = aux;
 		}
 	}
 }

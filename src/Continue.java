@@ -1,4 +1,6 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -13,15 +15,28 @@ public class Continue extends JFrame {
 	private JButton button_1, button_2;
 	private JPanel endPanel, questionPanel, buttonsPanel, mainPanel;
 	
-	public Continue() {
+	public Continue(Warrior player) {
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		question = new JLabel("Do you want to keep fighting?");
 		questionPanel = new JPanel();
 		questionPanel.add(question);
 		
-		button_1 = new JButton("yes");
-		button_2 = new JButton("no");
+		button_1 = new JButton("Yes");
+		button_1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				player.setHealth(2000);
+				dispose();
+			}
+		});
+		button_2 = new JButton("No");
+		button_2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		buttonsPanel = new JPanel();
 		buttonsPanel.add(button_1);
 		buttonsPanel.add(button_2);
@@ -35,10 +50,7 @@ public class Continue extends JFrame {
 		this.setTitle("Continue");
 		this.setSize(250, 150);
 		this.setResizable(false);
+		this.setLocation(550,350);
 		this.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		new Continue();
 	}
 }

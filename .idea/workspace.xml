@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="fight update">
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="fight update2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BBDDConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BBDDConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Continue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Continue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WeaponsFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeaponsFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +104,7 @@
       <workItem from="1683815008017" duration="3160000" />
       <workItem from="1683818473630" duration="14002000" />
       <workItem from="1683906137278" duration="9484000" />
-      <workItem from="1684243473041" duration="6163000" />
+      <workItem from="1684243473041" duration="14365000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
@@ -200,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684248332275</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fight update2">
+      <created>1684249937371</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1684249937371</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +255,7 @@
     <MESSAGE value="peleapelea" />
     <MESSAGE value="guardado personaje, se guarda su arma; creacion bot y asignacion arma de forma aleatoria" />
     <MESSAGE value="fight update" />
-    <option name="LAST_COMMIT_MESSAGE" value="fight update" />
+    <MESSAGE value="fight update2" />
+    <option name="LAST_COMMIT_MESSAGE" value="fight update2" />
   </component>
 </project>

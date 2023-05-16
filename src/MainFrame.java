@@ -44,7 +44,7 @@ public class MainFrame extends JFrame {
         playButton = new JButton("Play");
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (player == null) {
+                if (player == null || player.getWeapon() == null) {
                     JOptionPane.showMessageDialog(panelPrincipal, "You haven't chose any armed warrior!");
                 }
                 else {
@@ -68,12 +68,20 @@ public class MainFrame extends JFrame {
         characterButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
+                    //Desactivamos los botones mientras eleigmos un guerrero
+                    playButton.setEnabled(false);
+                    weaponButton.setEnabled(false);
+                    characterButton.setEnabled(false);
                     WarriorsFrame selectWarrior = new WarriorsFrame();
                     selectWarrior.addWindowListener(
                             new WindowAdapter() {
                                 @Override
                                 public void windowClosed(WindowEvent e) {
                                     player=selectWarrior.getWarrior();
+                                    //Volvemos a activar los botones
+                                    playButton.setEnabled(true);
+                                    weaponButton.setEnabled(true);
+                                    characterButton.setEnabled(true);
                                 }
                             }
                     );
@@ -92,6 +100,10 @@ public class MainFrame extends JFrame {
                     JOptionPane.showMessageDialog(panelPrincipal, "You haven't chose any warrior!");
                 }
                 else {
+                    //Desactivamos los botones mientras se elige un arma
+                    playButton.setEnabled(false);
+                    characterButton.setEnabled(false);
+                    weaponButton.setEnabled(false);
                     try {
                         WeaponsFrame selectWeapon = new WeaponsFrame(player);
                         selectWeapon.addWindowListener(
@@ -99,6 +111,10 @@ public class MainFrame extends JFrame {
                                     @Override
                                     public void windowClosed(WindowEvent e) {
                                         player.setWeapon(selectWeapon.getWeapon());
+                                        //Volvemos a activar los botones
+                                        playButton.setEnabled(true);
+                                        characterButton.setEnabled(true);
+                                        weaponButton.setEnabled(true);
                                     }
                                 }
                         );
@@ -139,7 +155,7 @@ public class MainFrame extends JFrame {
         this.setTitle("Menu");
         this.setSize(700, 700);
         this.setResizable(false);
+        this.setLocation(300,0);
         this.setVisible(true);
-
     }
 }
