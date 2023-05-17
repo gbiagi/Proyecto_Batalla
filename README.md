@@ -11,8 +11,8 @@ Para utilizar los archivos .py debe tener instalado pip con mysql.connector, xml
 
 ## Authors
 
-- [@joelberzalgithub](https://github.com/joelberzalgithub)
+- [@joelberzalgithub](https://github.com/joelberzalgithub), jberzalalamo.cf@iesesteveterradas.cat
 
-- [@gbiagi](https://github.com/gbiagi)
+- [@gbiagi](https://github.com/gbiagi), gbiagiharreguy.cf@iesesteveterradas.cat
 
-- [@tianleyin](https://github.com/tianleyin)
+- [@tianleyin](https://github.com/tianleyin), tyin.cf@iesesteveterradas.cat
