@@ -45,7 +45,7 @@ public class MainFrame extends JFrame {
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (player == null || player.getWeapon() == null) {
-                    JOptionPane.showMessageDialog(panelPrincipal, "You haven't chose any armed warrior!");
+                    JOptionPane.showMessageDialog(panelPrincipal, "You haven't chose any armed warrior!","Missing requirements!",JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     try {
@@ -85,6 +85,9 @@ public class MainFrame extends JFrame {
                                 }
                             }
                     );
+                    playButton.setEnabled(true);
+                    weaponButton.setEnabled(true);
+                    characterButton.setEnabled(true);
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -97,7 +100,7 @@ public class MainFrame extends JFrame {
         weaponButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (player == null) {
-                    JOptionPane.showMessageDialog(panelPrincipal, "You haven't chose any warrior!");
+                    JOptionPane.showMessageDialog(panelPrincipal, "You haven't chose any warrior!","Missing requirements!",JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                     //Desactivamos los botones mientras se elige un arma

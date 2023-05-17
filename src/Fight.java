@@ -18,6 +18,8 @@ public class Fight extends JFrame {
 	private int battleScore = 0;
 	private int totalScore = 0;
 	private int enemiesDefeated = 0;
+	private int injuriesCaused = 0;
+	private int injuriesSuffered = 0;
 	private String username;
 
 	public Fight(Warrior characterChosen, Warrior randomBot) {
@@ -144,6 +146,7 @@ public class Fight extends JFrame {
 		} else {
 			defender.setHealth(defender.getHealth() - damage);
 			message = defender.getName() + " has recieved " + damage + " damage points.";
+
 		}
 		return message;
 	}
@@ -181,7 +184,8 @@ public class Fight extends JFrame {
 
 		Warrior attacker;
 		Warrior defender;
-		int initialHealth = player.getHealth();
+		int initialHealthPlayer = player.getHealth();
+		int initialHealthBot = bot.getHealth();
 
 		int num = (int) (Math.floor(Math.random() * 2) + 1); // Random num in case both speed and agility are equal
 
@@ -226,15 +230,19 @@ public class Fight extends JFrame {
 				text.append("\n*******************************\n" + winner(attacker, defender));
 				if (winner(attacker, defender).equals(player.getName() + " wins!")) {
 					win = true;
-				System.out.println(attacker.getName()+"**"+attacker.getHealth());
-				System.out.println(defender.getName()+"**"+defender.getHealth());
-				System.out.println(player.getName()+"**"+player.getHealth());
+					enemiesDefeated += 1;
 				}
-				System.out.println(win);
+				// Calculate the points, damage taken & done and enemies slayed
+				battleScore += calculateScore(bot);
+				totalScore += battleScore;
+				injuriesSuffered = initialHealthPlayer - player.getHealth();
+				injuriesCaused = initialHealthBot - bot.getHealth();
+
 				fightButton.setEnabled(false);
 				characterButton.setEnabled(false);
 				weaponButton.setEnabled(false);
-				int selectContinue = JOptionPane.showOptionDialog(mainPanel, "Continue fighting?", "Continue?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+				int selectContinue = JOptionPane.showOptionDialog(mainPanel, "Do you want to continue fighting?", "Continue",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
 				if (selectContinue == 0) {
 					System.out.println("Yes");
@@ -255,8 +263,14 @@ public class Fight extends JFrame {
 							JOptionPane.showMessageDialog(mainPanel, "Invalid username. Enter a name with a maximum of 5 characters.");
 						}
 					}
+					// Save user data from this battle
+					BBDDConnection.insertPlayer(username,totalScore,enemiesDefeated);
+					int playerID = BBDDConnection.getPlayerID("Select PLAYER_ID from players WHERE PLAYER_NAME = "+username);
+					System.out.println(playerID + "playerID ************************************************");
+					// Save battle data
 					JOptionPane.showMessageDialog(mainPanel, "Score saved!");
-					//BBDDConnection.insertBattle();
+					BBDDConnection.insertBattle(String.valueOf(playerID), player.getId(),player.getWeapon().getId(),
+							bot.getId(),bot.getWeapon().getId(),injuriesCaused,injuriesSuffered,totalScore);
 					System.exit(0);
 
 				} else {
@@ -267,6 +281,11 @@ public class Fight extends JFrame {
 			attacker = defender;
 			defender = aux;
 		}
+	}
+	public int calculateScore(Warrior bot) {
+		int total = 0;
+		total += bot.getPoints() + bot.getWeapon().getPoints();
+		return total;
 	}
 }
 

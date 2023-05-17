@@ -1,11 +1,12 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BBDDConnection {
     public static ResultSet connection(String query) {
 
         String urlDatos = "jdbc:mysql://localhost/BatallaDeRaces?serverTimezone=UTC";
         String usuario = "root";
-        String pass = "1234";
+        String pass = "12345";
 
         // Pasos a seguir cada vez que queramos usar una base de datos con eclipse
 
@@ -13,12 +14,12 @@ public class BBDDConnection {
         try {
             // 1. Cargar driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-            //System.out.println("Driver cargado correctamente");
+            System.out.println("Driver cargado correctamente");
             // 2. Crear conexion con la base de datosw
             Connection conn = DriverManager.getConnection(urlDatos, usuario, pass);
-            //System.out.println("Conexion creada correctamente");
+            System.out.println("Conexion creada correctamente");
             // 3. Crear una consulta
-            //query = "select * from players";
+            //query
             // 4. Instanciar objeto de la clase consulta
             Statement stmnt = conn.createStatement();
             // 5. Ejecutar la consulta
@@ -34,12 +35,12 @@ public class BBDDConnection {
         return rs; // Hacemos return del ResultSet para poder tratar la salida como corresponda.
     }
 
-    public static void insertBattle(int PLAYER_ID, int WARRIOR_ID, int WARRIOR_WEAPON_ID, int OPPONENT_ID,
+    public static void insertBattle(String PLAYER_ID, int WARRIOR_ID, int WARRIOR_WEAPON_ID, int OPPONENT_ID,
                              int OPPONENT_WEAPON_ID, int INJURIES_CAUSED,int INJURIES_SUFFERED,int BATTLE_POINTS) {
 
         String urlDatos = "jdbc:mysql://localhost/BatallaDeRaces?serverTimezone=UTC";
         String usuario = "root";
-        String pass = "1234";
+        String pass = "12345";
 
         // Pasos a seguir cada vez que queramos usar una base de datos con eclipse
 
@@ -54,12 +55,12 @@ public class BBDDConnection {
             // 3. Crear una consulta
             //query = "select * from players";
             // 4. Instanciar objeto de la clase consulta
-            String update = "INSERT INTO battle (PLAYER_ID, WARRIOR_ID, WARRIOR_WEAPON_ID, OPPONENT_ID, OPPONENT_WEAPON_ID," +
-                    " INJURIES_CAUSED, INJURIES_SUFFERED, BATTLE_POINTS) VALUES (?,?,?,?,?,?,?,?,?)";
+            String update = "INSERT INTO battle ((PLAYER_ID), WARRIOR_ID, WARRIOR_WEAPON_ID, OPPONENT_ID, OPPONENT_WEAPON_ID," +
+                    " INJURIES_CAUSED, INJURIES_SUFFERED, BATTLE_POINTS) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(update);
             // 5. Ejecutar la consulta
 
-            ps.setInt(1,PLAYER_ID);
+            ps.setString(1,PLAYER_ID);
             ps.setInt(2,WARRIOR_ID);
             ps.setInt(3,WARRIOR_WEAPON_ID);
             ps.setInt(4,OPPONENT_ID);
@@ -80,7 +81,7 @@ public class BBDDConnection {
     public static void insertPlayer(String username, int score, int enemiesDefeated) {
         String urlDatos = "jdbc:mysql://localhost/BatallaDeRaces?serverTimezone=UTC";
         String usuario = "root";
-        String pass = "1234";
+        String pass = "12345";
 
         // Pasos a seguir cada vez que queramos usar una base de datos con eclipse
 
@@ -93,7 +94,7 @@ public class BBDDConnection {
             Connection conn = DriverManager.getConnection(urlDatos, usuario, pass);
             //System.out.println("Conexion creada correctamente");
             // 3. Crear una consulta
-            //query = "select * from players";
+            //query;
             // 4. Instanciar objeto de la clase consulta
             String update = "INSERT INTO players (PLAYER_NAME, SCORE, ENEMIES_SLAYED) VALUES (?,?,?)";
             PreparedStatement ps = conn.prepareStatement(update);
@@ -111,5 +112,31 @@ public class BBDDConnection {
             System.out.println("Conexion no creada correctamente!!");
             e.printStackTrace();
         }
+    }
+    public static int getPlayerID(String query) {
+        String urlDatos = "jdbc:mysql://localhost/BatallaDeRaces?serverTimezone=UTC";
+        String usuario = "root";
+        String pass = "12345";
+        ResultSet rs = null;
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Driver cargado correctamente");
+            Connection conn = DriverManager.getConnection(urlDatos, usuario, pass);
+            System.out.println("Conexion creada correctamente");
+
+            Statement stmnt = conn.createStatement();
+
+            rs = stmnt.executeQuery(query);
+            return rs.getInt(1);
+        }catch(
+                ClassNotFoundException ex)
+        {
+            System.out.println("No trobat el Driver MySQL per JDBC.");
+        } catch (SQLException e) {
+            System.out.println("Excepció del tipus SQL");
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
