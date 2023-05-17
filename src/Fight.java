@@ -5,13 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 public class Fight extends JFrame {
 	private boolean win;
@@ -123,16 +117,19 @@ public class Fight extends JFrame {
 	}
 
 //	Method that determines if a warrior can perform an attack or not
-	public String perform_attack(Warrior warrior) {
+	public boolean perform_attack(Warrior warrior) {
 		String message;
 		int num = (int) (Math.floor(Math.random() * 100) + 1);
 		if ((warrior.getAgility() * 10) > num) {
-			message = warrior.getName() + ": Attack succesfully performed.";
+			message = "\n"+warrior.getName() + ": Attack successfully performed.";
+			text.append(message);
+			return true;
 		}
 		else {
-			message = warrior.getName() + ": Attack failed.";
+			message = "\n"+warrior.getName() + ": Attack failed.";
+			text.append(message);
+			return false;
 		}
-		return message;
 	}
 
 //	Method that determines if a warrior can dodge an attack or, in case of receiving it, how much damage recieves
@@ -220,9 +217,9 @@ public class Fight extends JFrame {
 		}
 		while (true) {
 			while (true) {
-				text.append("\n"+attacker.getName()+" turn:");
-				text.append("\n"+perform_attack(attacker));
-				if (!perform_attack(attacker).contains("Attack failed.")){
+				text.append("\n\n"+attacker.getName()+" turn:");
+				//perform_attack(attacker);
+				if (perform_attack(attacker)){
 					text.append("\n"+dodge_attack(attacker, attacker.getWeapon(), defender));
 				}
 				text.append("\n"+attacker.getName()+" remaining health: "+attacker.getHealth());
@@ -230,6 +227,7 @@ public class Fight extends JFrame {
 				if (!repeat_attack(attacker, attacker.getWeapon(), defender, defender.getWeapon())) {
 					break;
 				}
+
 			}
 			if (attacker.getHealth() <= 0 || defender.getHealth() <= 0) {
 				text.append("\n*******************************\n"+winner(attacker,defender));
@@ -237,19 +235,32 @@ public class Fight extends JFrame {
 					win = true;
 					bot = null;
 				}
-				new Continue(player, bot, win, initialHealth).addWindowListener(new WindowAdapter() {
-					@Override
-					public void windowClosed(WindowEvent e) {
-						characterButton.setEnabled(true);
-						weaponButton.setEnabled(true);
+				int selectContinue = JOptionPane.showOptionDialog(mainPanel,"Continue fighting?","Continue?",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,null,null);
+					characterButton.setEnabled(false);
+					weaponButton.setEnabled(false);
+				if (selectContinue == 0) {
+					System.out.println("Yes");
+					characterButton.setEnabled(true);
+					weaponButton.setEnabled(true);
+				} else if (selectContinue == 1) {
+					System.out.println("No");
+				}else {
+					break;
+				}
 
-					}
-				});
-				break;
+//				new Continue(player, bot, win, initialHealth).addWindowListener(new WindowAdapter() {
+//					@Override
+//					public void windowClosed(WindowEvent e) {
+//						characterButton.setEnabled(true);
+//						weaponButton.setEnabled(true);
+//					}
+//				});
+//				break;
 			}
 			Warrior aux = attacker;
 			attacker = defender;
 			defender = aux;
+
 		}
 	}
 }
