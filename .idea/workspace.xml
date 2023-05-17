@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="fight + continue botones">
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="logica pelea arreglada">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BBDDConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BBDDConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Continue.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Fight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Fight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PruebaBBDD.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,7 @@
       <workItem from="1683818473630" duration="14002000" />
       <workItem from="1683906137278" duration="9484000" />
       <workItem from="1684243473041" duration="19856000" />
-      <workItem from="1684333837856" duration="4591000" />
+      <workItem from="1684333837856" duration="9889000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion proyecto">
       <created>1683302667059</created>
@@ -223,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684264286644</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="logica pelea arreglada">
+      <created>1684338445188</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1684338445188</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +278,7 @@
     <MESSAGE value="fight update2" />
     <MESSAGE value="fight + panel continue" />
     <MESSAGE value="fight + continue botones" />
-    <option name="LAST_COMMIT_MESSAGE" value="fight + continue botones" />
+    <MESSAGE value="logica pelea arreglada" />
+    <option name="LAST_COMMIT_MESSAGE" value="logica pelea arreglada" />
   </component>
 </project>
