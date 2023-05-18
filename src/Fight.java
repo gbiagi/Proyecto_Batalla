@@ -13,14 +13,14 @@ import javax.swing.*;
 
 public class Fight extends JFrame {
 	private boolean win;
-	private Warrior player, bot, newWarrior, newBot;
+	private Warrior newWarrior, newBot;
 	private Weapon weapon_1, weapon_2;
 	private BufferedImage image_1, image_2, image_3, image_4;
 	private int health_X1 = 250, health_X2 = 250, power_X1, power_X2, agility_X1, agility_X2, speed_X1, speed_X2, defense_X1, defense_X2;
 	private JTextArea text;
 	private JScrollPane console;
+	private JLabel extraWarriorLabel_1, extraWarriorLabel_2, extraLabel_1, extraLabel_2, warriorIcon_1, warriorIcon_2, weaponIcon_1, weaponIcon_2, power, agility, speed, defense;
 	private JButton characterButton, weaponButton, rankingButton, fightButton, clearButton;
-	private JLabel extraWarriorLabel_1, extraWarriorLabel_2, power, agility, speed, defense, warriorIcon_1, warriorIcon_2, weaponIcon_1, weaponIcon_2, extraLabel_1, extraLabel_2;
 	private JPanel buttonPanel_1, warriorsPanel, extraWarriorPanel_1, extraWarriorPanel_2, warriorPanel_1, warriorPanel_2, statsPanel_1, statsPanel_2, statsNamesPanel_1, statsNamesPanel_2, extraPanel_1, extraPanel_2, buttonPanel_2, consolePanel, mainPanel;
 	private int battleScore = 0;
 	private int totalScore = 0;
@@ -29,14 +29,9 @@ public class Fight extends JFrame {
 	private int injuriesSuffered = 0;
 	private String username;
 
-	public Fight(Warrior characterChosen, Warrior randomBot) {
+	public Fight(Warrior characterChosen, Warrior randomBot) throws SQLException {
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		player = characterChosen;
-		weapon_1 = player.getWeapon();
-		bot = randomBot;
-		weapon_2 = bot.getWeapon();
-		
 		characterButton = new JButton("Choose Character");
 		characterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +59,6 @@ public class Fight extends JFrame {
 				}
 			}
 		});
-		
 		weaponButton = new JButton("Choose weapon");
 		weaponButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,12 +76,25 @@ public class Fight extends JFrame {
 				}
 			}
 		});
-
+		
+		weapon_1 = characterChosen.getWeapon();
+		weapon_2 = randomBot.getWeapon();
+		
 		rankingButton = new JButton("Ranking");
 		buttonPanel_1 = new JPanel();
 		buttonPanel_1.add(characterButton);
 		buttonPanel_1.add(weaponButton);
 		buttonPanel_1.add(rankingButton);
+		
+		power_X1 = (characterChosen.getStrenght() + weapon_1.getStrenght()) * 5;
+		agility_X1 = characterChosen.getAgility() * 5;
+		speed_X1 = (characterChosen.getSpeed() + weapon_1.getSpeed()) * 5;
+		defense_X1 = characterChosen.getDefense() * 5;
+		
+		power_X2 = (randomBot.getStrenght() + weapon_2.getStrenght()) * 5;
+		agility_X2 = randomBot.getAgility() * 5;
+		speed_X2 = (randomBot.getSpeed() + weapon_2.getSpeed()) * 5;
+		defense_X2 = randomBot.getDefense() * 5;
 		
 		extraWarriorLabel_1 = new JLabel(" ");
 		extraWarriorPanel_1 = new JPanel();
@@ -98,7 +105,7 @@ public class Fight extends JFrame {
 		extraWarriorPanel_2.add(extraWarriorLabel_2);
 		
 		try {
-			image_1 = ImageIO.read(new File(player.getUrl()));
+			image_1 = ImageIO.read(new File(characterChosen.getUrl()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -145,7 +152,7 @@ public class Fight extends JFrame {
 		warriorPanel_1.setLayout(new BoxLayout(warriorPanel_1, BoxLayout.Y_AXIS));
 		
 		try {
-			image_2 = ImageIO.read(new File(bot.getUrl()));
+			image_2 = ImageIO.read(new File(randomBot.getUrl()));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -199,15 +206,13 @@ public class Fight extends JFrame {
 		fightButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (player.getHealth() <= 0) {
-					health_X1 = 0;
-					repaint();
+				try {
+					System.out.println(characterChosen.getName() + " ++ " + characterChosen.getWeapon());
+					System.out.println(randomBot.getName() + " ++ " + randomBot.getWeapon());
+					combat(characterChosen, randomBot);
+				} catch (SQLException ex) {
+					throw new RuntimeException(ex);
 				}
-				else {
-					health_X2 = 0;
-					repaint();
-				}
-				combat(player, bot);
 			}
 		});
 
@@ -241,28 +246,18 @@ public class Fight extends JFrame {
 		characterButton.setEnabled(false);
 		weaponButton.setEnabled(false);
 
-		this.setTitle("Menu");
+		this.setTitle("Fight");
 		this.setLocation(300, 0);
 		this.setSize(800, 700);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
 	
-	public void paint(Graphics g) {
+public void paint(Graphics g) {
 		
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setStroke(new BasicStroke(2));
-		
-		power_X1 = (player.getStrenght() + weapon_1.getStrenght()) * 5;
-		agility_X1 = player.getAgility() * 5;
-		speed_X1 = (player.getSpeed() + weapon_1.getSpeed()) * 5;
-		defense_X1 = player.getDefense() * 5;
-		
-		power_X2 = (bot.getStrenght() + weapon_2.getStrenght()) * 5;
-		agility_X2 = bot.getAgility() * 5;
-		speed_X2 = (bot.getSpeed() + weapon_2.getSpeed()) * 5;
-		defense_X2 = bot.getDefense() * 5;
 		
 	//	Player's health bar
 		g2d.setColor(Color.GREEN);
@@ -345,7 +340,6 @@ public class Fight extends JFrame {
 			return false;
 		}
 	}
-
 	//	Method that determines if a warrior can dodge an attack or, in case of receiving it, how much damage recieves
 	public String dodge_attack(Warrior attacker, Weapon weapon, Warrior defender) {
 		String message;
@@ -390,7 +384,7 @@ public class Fight extends JFrame {
 	}
 
 	//	Method that determines the fight logic
-	public void combat(Warrior player, Warrior bot) {
+	public void combat(Warrior player, Warrior bot) throws SQLException {
 
 		Warrior attacker;
 		Warrior defender;
@@ -445,8 +439,8 @@ public class Fight extends JFrame {
 				// Calculate the points, damage taken & done and enemies slayed
 				battleScore += calculateScore(bot);
 				totalScore += battleScore;
-				injuriesSuffered = initialHealthPlayer - player.getHealth();
-				injuriesCaused = initialHealthBot - bot.getHealth();
+				injuriesSuffered += initialHealthPlayer - player.getHealth();
+				injuriesCaused += initialHealthBot - bot.getHealth();
 
 				fightButton.setEnabled(false);
 				characterButton.setEnabled(false);
@@ -455,17 +449,42 @@ public class Fight extends JFrame {
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
 
 				if (selectContinue == 0) {
-					System.out.println("Yes");
-
-
-
+					// Button "Yes" from joptionpane
 					fightButton.setEnabled(true);
 					characterButton.setEnabled(true);
 					weaponButton.setEnabled(true);
 
-				} else if (selectContinue == 1) {
-					System.out.println("No");
+					//create new bot
+					//New bot
+					WarriorContainer warriorList = new WarriorContainer();
+					warriorList.createList();
+					newBot = warriorList.getWarrior((int) (Math.random()*warriorList.getList().size()));
+					WeaponContainer weaponList = new WeaponContainer();
+					weaponList.createList(newBot.getId());
 
+					bot.setWeapon(weaponList.getWeapon((int) (Math.random()*weaponList.getList().size())));
+					bot.setId(newBot.getId());
+					bot.setHealth(newBot.getHealth());
+					bot.setAgility(newBot.getAgility());
+					bot.setName(newBot.getName());
+					bot.setSpeed(newBot.getSpeed());
+					bot.setUrl(newBot.getUrl());
+					bot.setDefense(newBot.getDefense());
+					bot.setPoints(newBot.getPoints());
+					bot.setStrenght(newBot.getStrenght());
+
+					player.setHealth(initialHealthPlayer);
+					bot.setHealth(initialHealthBot);
+
+					//Set points for new round
+					totalScore += battleScore;
+					battleScore = 0;
+					enemiesDefeated += 1;
+					break;
+
+				} else if (selectContinue == 1) {
+					// Button "No" from joptionpane
+					//Username check
 					int maxUserLength = 5; // Maximum number of characters allowed
 					boolean userValid = false;
 					while (!userValid) { // Window asking for a username
@@ -478,27 +497,26 @@ public class Fight extends JFrame {
 					}
 					// Save user data from this battle
 					BBDDConnection.insertPlayer(username,totalScore,enemiesDefeated);
-					int playerID = BBDDConnection.getPlayerID("Select PLAYER_ID from players WHERE PLAYER_NAME = "+username);
-					System.out.println(playerID + "playerID ************************************************");
+					int playerID = BBDDConnection.getPlayerID("Select PLAYER_ID from players WHERE PLAYER_NAME = '"+username+"'");
 					// Save battle data
 					JOptionPane.showMessageDialog(mainPanel, "Score saved!");
 					BBDDConnection.insertBattle(String.valueOf(playerID), player.getId(),player.getWeapon().getId(),
 							bot.getId(),bot.getWeapon().getId(),injuriesCaused,injuriesSuffered,totalScore);
 					System.exit(0);
-
 				} else {
 					break;
 				}
 			}
+			//Change attacker to defender
 			Warrior aux = attacker;
 			attacker = defender;
 			defender = aux;
 		}
 	}
+	//Method to calculate the user score
 	public int calculateScore(Warrior bot) {
 		int total = 0;
 		total += bot.getPoints() + bot.getWeapon().getPoints();
 		return total;
 	}
-
 }
