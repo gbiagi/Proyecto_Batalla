@@ -1,5 +1,5 @@
 body {
-    background-image: url(../../images/imagenmenu.jpg);
+    background-image: url(imagenmenu.jpg);
     background-repeat:no-repeat;
     background-position: center;
     background-size:cover;
@@ -25,6 +25,7 @@ body {
     align-items: center;
     padding:10px;
     border-radius: 25px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .int h1 {
@@ -37,11 +38,15 @@ body {
 
 .bttl {
     margin-top: 25px;
-    background-color:rgba(0, 0, 0, 1);
+    background-color:rgba(0, 0, 0, 0.9);
     color: white;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+}
+
+.bttl:hover{
+    transform: scale(1.05);
 }
 
 .content {
@@ -49,6 +54,7 @@ body {
     flex-direction: row;
     justify-content: center;
     padding: 10px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .content h3 {
@@ -63,7 +69,7 @@ body {
 .doble {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .versus h1{
@@ -84,9 +90,13 @@ body {
 .punts p {
     padding: 10px;
     margin-bottom: 15px;
+    font-size:larger;
 }
 
-@media  only screen and (max-width: 896px){
+@media  only screen and (max-width: 768px){
+    html, body {
+        overflow-x: hidden;
+    }
     .bttl {
         width: auto;
     }
