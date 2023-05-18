@@ -3,26 +3,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Fight extends JFrame {
 	private boolean win;
+	private Warrior newWarrior, newBot;
 	private Weapon weapon_1, weapon_2;
-	private JTextArea text, healthPlayer, healthBot;
+	private BufferedImage image_1, image_2, image_3, image_4;
+	private int health_X1 = 250, health_X2 = 250, power_X1, power_X2, agility_X1, agility_X2, speed_X1, speed_X2, defense_X1, defense_X2;
+	private JTextArea text;
 	private JScrollPane console;
-	private JLabel playerIcon, botIcon;
+	private JLabel extraWarriorLabel_1, extraWarriorLabel_2, extraLabel_1, extraLabel_2, warriorIcon_1, warriorIcon_2, weaponIcon_1, weaponIcon_2, power, agility, speed, defense;
 	private JButton characterButton, weaponButton, rankingButton, fightButton, clearButton;
-	private JPanel buttonPanel_1, charactersPanel, characterPanel_1, characterPanel_2, weaponsPanel, statsPanel, statsLvlPanel, buttonPanel_2, consolePanel, mainPanel;
+	private JPanel buttonPanel_1, warriorsPanel, extraWarriorPanel_1, extraWarriorPanel_2, warriorPanel_1, warriorPanel_2, statsPanel_1, statsPanel_2, statsNamesPanel_1, statsNamesPanel_2, extraPanel_1, extraPanel_2, buttonPanel_2, consolePanel, mainPanel;
 	private int battleScore = 0;
 	private int totalScore = 0;
 	private int enemiesDefeated = 0;
 	private int injuriesCaused = 0;
 	private int injuriesSuffered = 0;
 	private String username;
-	Warrior newBot;
-	Warrior newWarrior;
 
 	public Fight(Warrior characterChosen, Warrior randomBot) throws SQLException {
 
@@ -71,6 +76,10 @@ public class Fight extends JFrame {
 				}
 			}
 		});
+
+		weapon_1 = characterChosen.getWeapon();
+		weapon_2 = randomBot.getWeapon();
+
 		rankingButton = new JButton("Ranking");
 		rankingButton.addActionListener(new ActionListener() {
 			@Override
@@ -83,23 +92,117 @@ public class Fight extends JFrame {
 		buttonPanel_1.add(weaponButton);
 		buttonPanel_1.add(rankingButton);
 
-		healthPlayer = new JTextArea(3, 32);
-		healthPlayer.setEditable(false);
-		healthPlayer.setText("100%");
-		healthPlayer.setAlignmentX(Component.CENTER_ALIGNMENT);
-		healthPlayer.setAlignmentY(Component.CENTER_ALIGNMENT);
+		power_X1 = (characterChosen.getStrenght() + weapon_1.getStrenght()) * 5;
+		agility_X1 = characterChosen.getAgility() * 5;
+		speed_X1 = (characterChosen.getSpeed() + weapon_1.getSpeed()) * 5;
+		defense_X1 = characterChosen.getDefense() * 5;
 
-		characterPanel_1 = new JPanel();
-		characterPanel_1.add(healthPlayer);
+		power_X2 = (randomBot.getStrenght() + weapon_2.getStrenght()) * 5;
+		agility_X2 = randomBot.getAgility() * 5;
+		speed_X2 = (randomBot.getSpeed() + weapon_2.getSpeed()) * 5;
+		defense_X2 = randomBot.getDefense() * 5;
 
-		healthBot = new JTextArea(3, 32);
-		healthBot.setText("100%");
-		characterPanel_2 = new JPanel();
-		characterPanel_2.add(healthBot);
+		extraWarriorLabel_1 = new JLabel(" ");
+		extraWarriorPanel_1 = new JPanel();
+		extraWarriorPanel_1.add(extraWarriorLabel_1);
 
-		charactersPanel = new JPanel();
-		charactersPanel.add(characterPanel_1);
-		charactersPanel.add(characterPanel_2);
+		extraWarriorLabel_2 = new JLabel(" ");
+		extraWarriorPanel_2 = new JPanel();
+		extraWarriorPanel_2.add(extraWarriorLabel_2);
+
+		try {
+			image_1 = ImageIO.read(new File(characterChosen.getUrl()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image icon_1 = image_1.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
+		warriorIcon_1 = new JLabel();
+		warriorIcon_1.setIcon(new ImageIcon(icon_1));
+
+		try {
+			image_3 = ImageIO.read(new File(weapon_1.getUrl()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image icon_3 = image_3.getScaledInstance(65, 65, java.awt.Image.SCALE_SMOOTH);
+		weaponIcon_1 = new JLabel();
+		weaponIcon_1.setIcon(new ImageIcon(icon_3));
+
+		power = new JLabel("Power");
+		agility = new JLabel("Agility");
+		speed = new JLabel("Speed");
+		defense = new JLabel("Defense");
+
+		statsNamesPanel_1 = new JPanel();
+		statsNamesPanel_1.add(power);
+		statsNamesPanel_1.add(agility);
+		statsNamesPanel_1.add(speed);
+		statsNamesPanel_1.add(defense);
+		statsNamesPanel_1.setLayout(new BoxLayout(statsNamesPanel_1, BoxLayout.Y_AXIS));
+
+		extraLabel_1 = new JLabel("          ");
+		extraPanel_1 = new JPanel();
+		extraPanel_1.add(extraLabel_1);
+
+		statsPanel_1 = new JPanel();
+		statsPanel_1.add(weaponIcon_1);
+		statsPanel_1.add(statsNamesPanel_1);
+		statsPanel_1.add(extraPanel_1);
+
+		warriorPanel_1 = new JPanel();
+		warriorPanel_1.add(extraWarriorPanel_1);
+		warriorPanel_1.add(warriorIcon_1);
+		warriorPanel_1.add(statsPanel_1);
+		warriorPanel_1.setLayout(new BoxLayout(warriorPanel_1, BoxLayout.Y_AXIS));
+
+		try {
+			image_2 = ImageIO.read(new File(randomBot.getUrl()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image icon_2 = image_2.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
+		warriorIcon_2 = new JLabel();
+		warriorIcon_2.setIcon(new ImageIcon(icon_2));
+
+		try {
+			image_4 = ImageIO.read(new File(weapon_2.getUrl()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Image icon_4 = image_4.getScaledInstance(65, 65, java.awt.Image.SCALE_SMOOTH);
+		weaponIcon_2 = new JLabel();
+		weaponIcon_2.setIcon(new ImageIcon(icon_4));
+
+		power = new JLabel("Power");
+		agility = new JLabel("Agility");
+		speed = new JLabel("Speed");
+		defense = new JLabel("Defense");
+
+		statsNamesPanel_2 = new JPanel();
+		statsNamesPanel_2.add(power);
+		statsNamesPanel_2.add(agility);
+		statsNamesPanel_2.add(speed);
+		statsNamesPanel_2.add(defense);
+		statsNamesPanel_2.setLayout(new BoxLayout(statsNamesPanel_2, BoxLayout.Y_AXIS));
+
+		extraLabel_2 = new JLabel("          ");
+		extraPanel_2 = new JPanel();
+		extraPanel_2.add(extraLabel_2);
+
+		statsPanel_2 = new JPanel();
+		statsPanel_2.add(weaponIcon_2);
+		statsPanel_2.add(statsNamesPanel_2);
+		statsPanel_2.add(extraPanel_2);
+
+		warriorPanel_2 = new JPanel();
+		warriorPanel_2.add(extraWarriorPanel_2);
+		warriorPanel_2.add(warriorIcon_2);
+		warriorPanel_2.add(statsPanel_2);
+		warriorPanel_2.setLayout(new BoxLayout(warriorPanel_2, BoxLayout.Y_AXIS));
+
+		warriorsPanel = new JPanel();
+		warriorsPanel.add(warriorPanel_1);
+		warriorsPanel.add(warriorPanel_2);
 
 		fightButton = new JButton("Fight");
 		fightButton.addActionListener(new ActionListener() {
@@ -136,7 +239,7 @@ public class Fight extends JFrame {
 
 		mainPanel = new JPanel();
 		mainPanel.add(buttonPanel_1);
-		mainPanel.add(charactersPanel);
+		mainPanel.add(warriorsPanel);
 		mainPanel.add(buttonPanel_2);
 		mainPanel.add(consolePanel);
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -145,11 +248,70 @@ public class Fight extends JFrame {
 		characterButton.setEnabled(false);
 		weaponButton.setEnabled(false);
 
-		this.setTitle("Menu");
+		this.setTitle("Fight");
 		this.setLocation(300, 0);
 		this.setSize(800, 700);
 		this.setResizable(false);
 		this.setVisible(true);
+	}
+
+	public void paint(Graphics g) {
+
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setStroke(new BasicStroke(2));
+
+		//	Player's health bar
+		g2d.setColor(Color.GREEN);
+		g2d.fillRect(147, 82, health_X1, 25);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(147, 82, 250, 25);
+		//	Player's power level bar
+		g2d.setColor(Color.RED);
+		g2d.fillRect(295, 365, power_X1, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(295, 365, 100, 15);
+		//	Player's agility level bar
+		g2d.setColor(Color.MAGENTA);
+		g2d.fillRect(295, 380, agility_X1, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(295, 380, 100, 15);
+		//	Player's speed level bar
+		g2d.setColor(Color.ORANGE);
+		g2d.fillRect(295, 395, speed_X1, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(295, 395, 100, 15);
+		//	Player's defense level bar
+		g2d.setColor(Color.BLUE);
+		g2d.fillRect(295, 410, defense_X1, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(295, 410, 100, 15);
+
+		//	Bot's health bar
+		g2d.setColor(Color.GREEN);
+		g2d.fillRect(490, 82, health_X2, 25);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(490, 82, 250, 25);
+		//	Bot's power level bar
+		g2d.setColor(Color.RED);
+		g2d.fillRect(640, 365, power_X2, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(640, 365, 100, 15);
+		//	Bot's agility level bar
+		g2d.setColor(Color.MAGENTA);
+		g2d.fillRect(640, 380, agility_X2, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(640, 380, 100, 15);
+		//	Bot's speed level bar
+		g2d.setColor(Color.ORANGE);
+		g2d.fillRect(640, 395, speed_X2, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(640, 395, 100, 15);
+		//	Bot's defense level bar
+		g2d.setColor(Color.BLUE);
+		g2d.fillRect(640, 410, defense_X2, 15);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(640, 410, 100, 15);
 	}
 
 	//	Method that counts a warrior's total speed
@@ -360,5 +522,3 @@ public class Fight extends JFrame {
 		return total;
 	}
 }
-
-
