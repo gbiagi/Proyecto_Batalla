@@ -9,7 +9,7 @@ Para utilizar los archivos .py debe tener instalado pip con mysql.connector, xml
 
 
 
-## Autors
+## Autores
 
 - [@joelberzalgithub](https://github.com/joelberzalgithub), email: jberzalalamo.cf@iesesteveterradas.cat
 
