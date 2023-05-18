@@ -25,12 +25,15 @@ public class Fight extends JFrame {
 	public Fight(Warrior characterChosen, Warrior randomBot) {
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Warrior player = characterChosen;
+		Warrior bot = randomBot;
 
 		characterButton = new JButton("Choose Character");
 		characterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new WarriorsFrame();
+					Warrior player = new WarriorsFrame().getWarrior();
 				} catch (SQLException ex) {
 					throw new RuntimeException(ex);
 				}
@@ -66,7 +69,7 @@ public class Fight extends JFrame {
 		fightButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				combat(characterChosen, randomBot);
+				combat(player, bot);
 			}
 		});
 
@@ -246,6 +249,9 @@ public class Fight extends JFrame {
 
 				if (selectContinue == 0) {
 					System.out.println("Yes");
+
+
+
 					fightButton.setEnabled(true);
 					characterButton.setEnabled(true);
 					weaponButton.setEnabled(true);
