@@ -13,10 +13,10 @@ import javax.swing.*;
 
 public class Fight extends JFrame {
 	private boolean win;
-	private Warrior player, bot;
+	private Warrior player, bot, newWarrior, newBot;
 	private Weapon weapon_1, weapon_2;
 	private BufferedImage image_1, image_2, image_3, image_4;
-	private int X1 = 250, X2 = 250, power_X1, power_X2, agility_X1, agility_X2, speed_X1, speed_X2, defense_X1, defense_X2;
+	private int health_X1 = 250, health_X2 = 250, power_X1, power_X2, agility_X1, agility_X2, speed_X1, speed_X2, defense_X1, defense_X2;
 	private JTextArea text;
 	private JScrollPane console;
 	private JButton characterButton, weaponButton, rankingButton, fightButton, clearButton;
@@ -41,14 +41,47 @@ public class Fight extends JFrame {
 		characterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					new WarriorsFrame();
-					Warrior player = new WarriorsFrame().getWarrior();
+					WarriorsFrame newSelectWarrior = new WarriorsFrame();
+					newSelectWarrior.addWindowListener(
+							new WindowAdapter() {
+								@Override
+								public void windowClosed(WindowEvent e) {
+									newWarrior = newSelectWarrior.getWarrior();
+									characterChosen.setId(newWarrior.getId());
+									characterChosen.setWeapon(null);
+									characterChosen.setHealth(newWarrior.getHealth());
+									characterChosen.setAgility(newWarrior.getAgility());
+									characterChosen.setName(newWarrior.getName());
+									characterChosen.setSpeed(newWarrior.getSpeed());
+									characterChosen.setUrl(newWarrior.getUrl());
+									characterChosen.setDefense(newWarrior.getDefense());
+									characterChosen.setPoints(newWarrior.getPoints());
+									characterChosen.setStrenght(newWarrior.getStrenght());
+								}
+							});
 				} catch (SQLException ex) {
 					throw new RuntimeException(ex);
 				}
 			}
 		});
+		
 		weaponButton = new JButton("Choose weapon");
+		weaponButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					WeaponsFrame newWeapon = new WeaponsFrame(characterChosen);
+					newWeapon.addWindowListener(
+							new WindowAdapter() {
+								@Override
+								public void windowClosed(WindowEvent e) {
+									characterChosen.setWeapon(newWeapon.getWeapon());
+								}
+							});
+				} catch (SQLException ex) {
+					throw new RuntimeException(ex);
+				}
+			}
+		});
 
 		rankingButton = new JButton("Ranking");
 		buttonPanel_1 = new JPanel();
@@ -163,13 +196,20 @@ public class Fight extends JFrame {
 		warriorsPanel.add(warriorPanel_2);
 		
 		fightButton = new JButton("Fight");
-		/*
 		fightButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (player.getHealth() <= 0) {
+					health_X1 = 0;
+					repaint();
+				}
+				else {
+					health_X2 = 0;
+					repaint();
+				}
 				combat(player, bot);
 			}
-		});*/
+		});
 
 		clearButton = new JButton("Clear Console");
 		clearButton.addActionListener(new ActionListener() {
@@ -226,9 +266,9 @@ public class Fight extends JFrame {
 		
 	//	Player's health bar
 		g2d.setColor(Color.GREEN);
-		g2d.fillRect(147, 82, X1, 30);
+		g2d.fillRect(147, 82, health_X1, 25);
 		g2d.setColor(Color.BLACK);
-		g2d.drawRect(147, 82, 250, 30);
+		g2d.drawRect(147, 82, 250, 25);
 	//	Player's power level bar
 		g2d.setColor(Color.RED);
 		g2d.fillRect(295, 365, power_X1, 15);
@@ -252,9 +292,9 @@ public class Fight extends JFrame {
 		
 	//	Bot's health bar
 		g2d.setColor(Color.GREEN);
-		g2d.fillRect(490, 82, X2, 30);
+		g2d.fillRect(490, 82, health_X2, 25);
 		g2d.setColor(Color.BLACK);
-		g2d.drawRect(490, 82, 250, 30);
+		g2d.drawRect(490, 82, 250, 25);
 	//	Bot's power level bar
 		g2d.setColor(Color.RED);
 		g2d.fillRect(640, 365, power_X2, 15);
@@ -276,7 +316,7 @@ public class Fight extends JFrame {
 		g2d.setColor(Color.BLACK);
 		g2d.drawRect(640, 410, 100, 15);
 	}
-/*	
+	
 	//	Method that counts a warrior's total speed
 	public int total_speed(Warrior warrior, Weapon weapon) {
 		int count_speed;
@@ -460,5 +500,5 @@ public class Fight extends JFrame {
 		total += bot.getPoints() + bot.getWeapon().getPoints();
 		return total;
 	}
-*/	
+
 }
