@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="ranking">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BBDDConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BBDDConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ranking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ranking.java" afterDir="false" />
-    </list>
+    <list default="true" id="1f86dca4-2441-48ee-98a2-cc28912cace3" name="Changes" comment="ranking" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="joel" />
+        <entry key="$PROJECT_DIR$" value="gean" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
