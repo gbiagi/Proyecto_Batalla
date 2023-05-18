@@ -21,8 +21,7 @@ public class Fight extends JFrame {
 	private int injuriesCaused = 0;
 	private int injuriesSuffered = 0;
 	private String username;
-	boolean battle = true;
-		Warrior newBot;
+	Warrior newBot;
 	Warrior newWarrior;
 
 	public Fight(Warrior characterChosen, Warrior randomBot) throws SQLException {
@@ -103,7 +102,6 @@ public class Fight extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					battle = true;
 					System.out.println(characterChosen.getName() + " ++ " + characterChosen.getWeapon());
 					System.out.println(randomBot.getName() + " ++ " + randomBot.getWeapon());
 					combat(characterChosen, randomBot);
@@ -254,7 +252,6 @@ public class Fight extends JFrame {
 				}
 			}
 		}
-		battle = true;
 		while (true) {
 			while (true) {
 				text.append("\n\n" + attacker.getName() + " turn:");
@@ -319,7 +316,6 @@ public class Fight extends JFrame {
 					totalScore += battleScore;
 					battleScore = 0;
 					enemiesDefeated += 1;
-					battle = false;
 					break;
 
 				} else if (selectContinue == 1) {
