@@ -2,13 +2,14 @@ import mysql.connector
 import xml.etree.ElementTree as ET
 
 # First of all, you need to install mysql.connector package
-# To do that you need to have pip in your system
+# To do that you need to have pip in your system.
 # PIP for Windows: install this file https://bootstrap.pypa.io/get-pip.py
 # then execute the file in the command line with "python get-pip.py"
 #PIP for UBUNTU: write in terminal, sudo apt update. Then sudo apt install python3-pip
 # Once you install pip, you can
 # write pip install mysql-connector-python in the terminal
 
+# Then, to create the xml you need to set your the connection to your own BBDD
 conexion = mysql.connector.connect(user='root',password='1234',
                                    host='localhost', database='BatallaDeRaces',
                                    port='3306')
