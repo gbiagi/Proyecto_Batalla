@@ -1,0 +1,85 @@
+INSERT INTO warriors VALUES(1,"Celebrimbor",40,4,7,7,2,"./M03_Programacio/WarriorsImages/elf/elf1.jpg",19);
+INSERT INTO warriors VALUES(2,"Glorfindel",40,4,7,7,2,"./M03_Programacio/WarriorsImages/elf/elf2.jpg",19);
+INSERT INTO warriors VALUES(3,"Elrond",40,4,7,7,2,"./M03_Programacio/WarriorsImages/elf/elf3.jpg",19);
+INSERT INTO warriors VALUES(4,"Dirhael",50,5,5,6,3,"./M03_Programacio/WarriorsImages/human/huma1.jpg",19);
+INSERT INTO warriors VALUES(5,"Arador",50,5,5,6,3,"./M03_Programacio/WarriorsImages/human/huma2.jpg",19);
+INSERT INTO warriors VALUES(6,"Elldan",50,5,5,6,3,"./M03_Programacio/WarriorsImages/human/huma3.jpg",19);
+INSERT INTO warriors VALUES(7,"Gloin",60,6,3,5,4,"./M03_Programacio/WarriorsImages/dwarf/dwarf1.jpg",19);
+INSERT INTO warriors VALUES(8,"Balin",60,6,3,5,4,"./M03_Programacio/WarriorsImages/dwarf/dwarf2.jpg",19);
+INSERT INTO warriors VALUES(9,"Thrain",60,6,3,5,4,"./M03_Programacio/WarriorsImages/dwarf/dwarf3.jpg",19);
+
+INSERT INTO weapons VALUES (1,"Bow",5,0,"./M03_Programacio/WeaponsImages/bow.jpeg",15);
+INSERT INTO weapons VALUES (2,"Axe",0,3,"./M03_Programacio/WeaponsImages/axe.jpeg",10);
+INSERT INTO weapons VALUES (3,"Dual Wield Axe",0,5,"./M03_Programacio/WeaponsImages/dual_wield_axe.jpeg",20);
+INSERT INTO weapons VALUES (4,"Dagger",3,0,"./M03_Programacio/WeaponsImages/dagger.jpeg",10);
+INSERT INTO weapons VALUES (5,"Knife",4,0,"./M03_Programacio/WeaponsImages/knife.jpeg",12);
+INSERT INTO weapons VALUES (6,"Sword",1,1,"./M03_Programacio/WeaponsImages/sword.jpeg",10);
+INSERT INTO weapons VALUES (7,"Dual Sword",2,2,"./M03_Programacio/WeaponsImages/dual_sword.jpeg",14);
+INSERT INTO weapons VALUES (8,"Katana",3,2,"./M03_Programacio/WeaponsImages/katana.jpeg",18);
+INSERT INTO weapons VALUES (9,"Scimitar",2,1,"./M03_Programacio/WeaponsImages/scimitar.jpeg",14);
+
+
+/* Inserts armas elfos*/
+INSERT INTO weapons_available VALUES(1,1);
+INSERT INTO weapons_available VALUES(2,1);
+INSERT INTO weapons_available VALUES(3,1);
+INSERT INTO weapons_available VALUES(1,4);
+INSERT INTO weapons_available VALUES(2,4);
+INSERT INTO weapons_available VALUES(3,4);
+INSERT INTO weapons_available VALUES(1,5);
+INSERT INTO weapons_available VALUES(2,5);
+INSERT INTO weapons_available VALUES(3,5);
+INSERT INTO weapons_available VALUES(1,6);
+INSERT INTO weapons_available VALUES(2,6);
+INSERT INTO weapons_available VALUES(3,6);
+INSERT INTO weapons_available VALUES(1,7);
+INSERT INTO weapons_available VALUES(2,7);
+INSERT INTO weapons_available VALUES(3,7);
+INSERT INTO weapons_available VALUES(1,9);
+INSERT INTO weapons_available VALUES(2,9);
+INSERT INTO weapons_available VALUES(3,9);
+
+
+
+/* Inserts armas humanos*/
+INSERT INTO weapons_available VALUES(4,2);
+INSERT INTO weapons_available VALUES(5,2);
+INSERT INTO weapons_available VALUES(6,2);
+INSERT INTO weapons_available VALUES(4,4);
+INSERT INTO weapons_available VALUES(5,4);
+INSERT INTO weapons_available VALUES(6,4);
+INSERT INTO weapons_available VALUES(4,5);
+INSERT INTO weapons_available VALUES(5,5);
+INSERT INTO weapons_available VALUES(6,5);
+INSERT INTO weapons_available VALUES(4,6);
+INSERT INTO weapons_available VALUES(5,6);
+INSERT INTO weapons_available VALUES(6,6);
+INSERT INTO weapons_available VALUES(4,7);
+INSERT INTO weapons_available VALUES(5,7);
+INSERT INTO weapons_available VALUES(6,7);
+INSERT INTO weapons_available VALUES(4,8);
+INSERT INTO weapons_available VALUES(5,8);
+INSERT INTO weapons_available VALUES(6,8);
+INSERT INTO weapons_available VALUES(4,9);
+INSERT INTO weapons_available VALUES(5,9);
+INSERT INTO weapons_available VALUES(6,9);
+
+
+/* Inserts armas enanos*/
+INSERT INTO weapons_available VALUES(7,2);
+INSERT INTO weapons_available VALUES(8,2);
+INSERT INTO weapons_available VALUES(9,2);
+INSERT INTO weapons_available VALUES(7,3);
+INSERT INTO weapons_available VALUES(8,3);
+INSERT INTO weapons_available VALUES(9,3);
+INSERT INTO weapons_available VALUES(7,5);
+INSERT INTO weapons_available VALUES(8,5);
+INSERT INTO weapons_available VALUES(9,5);
+INSERT INTO weapons_available VALUES(7,6);
+INSERT INTO weapons_available VALUES(8,6);
+INSERT INTO weapons_available VALUES(9,6);
+
+
+
+
+
