@@ -8,8 +8,6 @@ public class BBDDConnection {
         String usuario = "root";
         String pass = "1234";
 
-        // Pasos a seguir cada vez que queramos usar una base de datos con eclipse
-
         ResultSet rs = null;
         try {
             // 1. Cargar driver
@@ -140,4 +138,42 @@ public class BBDDConnection {
         }
         return playerID;
     }
+
+    public static String ranking(){
+        String urlDatos = "jdbc:mysql://localhost/BatallaDeRaces?serverTimezone=UTC";
+        String usuario = "root";
+        String pass = "1234";
+        String message = "PLAYER_ID | PLAYER_NAME | SCORE | ENEMIES_SLAYED\n";
+
+        try {
+            // 1. Cargar driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            //System.out.println("Driver cargado correctamente");
+            // 2. Crear conexion con la base de datos
+            Connection conn = DriverManager.getConnection(urlDatos,usuario,pass);
+            //System.out.println("Conexion creada correctamente");
+            // 3. Crear una consulta
+            String query = "select * from players order by score desc";
+            // 4. Instanciar objeto de la clase consulta
+            Statement stmnt = conn.createStatement();
+
+            // 5. Ejecutar la consulta
+            ResultSet rs = stmnt.executeQuery(query);
+
+            // Muestra los resultados por pantalla
+            while (rs.next()) {
+                message += (rs.getInt(1) + " | " + rs.getString(2) + " | " + rs.getInt(3)
+                        + " | " + rs.getInt(4) + "\n");
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("Driver no se ha cargado correctamente!!");
+        } catch (SQLException e) {
+            System.out.println("Conexion no creada correctamente!!");
+            e.printStackTrace();
+        }
+
+        return message;
+
+    }
 }
+
