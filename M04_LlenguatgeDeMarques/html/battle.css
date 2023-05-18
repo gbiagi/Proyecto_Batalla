@@ -3,7 +3,7 @@ body {
     background-repeat:no-repeat;
     background-position: center;
     background-size:cover;
-    box-sizing: border-box;       
+    box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
     max-width: 1000px;
@@ -45,16 +45,13 @@ body {
     border-radius: 10px;
 }
 
-.bttl:hover{
-    transform: scale(1.05);
-}
-
 .content {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 10px;
     font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 15px;
 }
 
 .content h3 {
@@ -85,6 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .punts p {

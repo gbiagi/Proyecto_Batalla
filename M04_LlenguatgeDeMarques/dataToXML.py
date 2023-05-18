@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 # write pip install mysql-connector-python in the terminal
 
 # Then, to create the xml you need to set your the connection to your own BBDD
-conexion = mysql.connector.connect(user='root',password='1234',
+conexion = mysql.connector.connect(user='root',password='12345',
                                    host='localhost', database='BatallaDeRaces',
                                    port='3306')
 print(conexion)
