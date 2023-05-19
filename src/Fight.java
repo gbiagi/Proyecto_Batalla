@@ -104,6 +104,13 @@ public class Fight extends JFrame {
 		weapon_2 = randomBot.getWeapon();
 		
 		rankingButton = new JButton("Ranking");
+		rankingButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Ranking();
+			}
+		});
+		
 		buttonPanel_1 = new JPanel();
 		buttonPanel_1.add(characterButton);
 		buttonPanel_1.add(weaponButton);
